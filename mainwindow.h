@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include "touchwater/inc/touchwater.hpp"
+
 namespace Ui {
 class MainWindow;
 }
@@ -17,6 +19,7 @@ public:
 
 private slots:
     void on_pbSetZp_clicked();
+    void openSFile();
 
 private:
     Ui::MainWindow *ui;

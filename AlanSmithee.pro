@@ -26,11 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    smithwidget.cpp
+    smithwidget.cpp \
+    touchwater/src/touchwater.cpp
 
 HEADERS += \
         mainwindow.h \
-    smithwidget.h
+    smithwidget.h \
+    touchwater/inc/touchwater.hpp
 
 FORMS += \
         mainwindow.ui

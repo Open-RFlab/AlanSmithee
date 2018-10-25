@@ -112,6 +112,19 @@
      <height>30</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFIle">
+    <property name="title">
+     <string>Fi&amp;le</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuTouchstone">
+    <property name="title">
+     <string>To&amp;uchstone</string>
+    </property>
+    <addaction name="actionOpenSFile"/>
+   </widget>
+   <addaction name="menuFIle"/>
+   <addaction name="menuTouchstone"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -122,6 +135,11 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionOpenSFile">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
@@ -132,5 +150,25 @@
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>actionOpenSFile</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>openSFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>610</x>
+     <y>14</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>610</x>
+     <y>305</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>openSFile()</slot>
+ </slots>
 </ui>

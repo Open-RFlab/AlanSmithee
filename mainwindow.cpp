@@ -1,4 +1,5 @@
 #include <complex>
+#include <QFileDialog>
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -28,4 +29,12 @@ void MainWindow::on_pbSetZp_clicked()
 
     this->ui->smithGLWidget->addZPoint(c);
     this->ui->smithGLWidget->repaint();
+}
+
+void MainWindow::openSFile() {
+    QString sfilename = QFileDialog::getOpenFileName(this, tr("Open Directory"), "/home");
+    std::ifstream sfile;
+    sfile.open(sfilename.toStdString(), std::ios_base::in);
+
+    TouchstoneParser myParser(sfile);
 }

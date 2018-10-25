@@ -3,16 +3,40 @@
 
 #include <QObject>
 #include <QWidget>
+#include <QOpenGLWidget>
+#include <QPainter>
 
-class SmithWidget : public QObject
+#include <complex>
+
+const uint32_t scNbCircle = 6;
+
+class SmithWidget : public QOpenGLWidget
 {
     Q_OBJECT
+
 public:
-    explicit SmithWidget(QObject *parent = nullptr);
+    SmithWidget(QWidget *parent);
 
-signals:
+    void setSize(uint16_t size);
 
-public slots:
+    std::complex<double> *SList;
+    QPointF *dispList;
+    uint16_t Sp = 0;
+    uint16_t size = 0;
+
+    double ZDispList[scNbCircle] = {10.0, 25.0, 50.0, 100.0, 200.0, 500.0};
+
+    double Z0 = 50;
+
+    void addZPoint(std::complex<double> Zt);
+
+private:
+    void drawSmith(QPainter *painter);
+    void calcCircle();
+
+protected:
+    void paintEvent(QPaintEvent *event) override;
+
 };
 
 #endif // SMITHWIDGET_H

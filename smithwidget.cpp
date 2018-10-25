@@ -64,7 +64,7 @@ void SmithWidget::drawSmith(QPainter *painter) {
         dispList[j].setY(SList[j].imag()*radius+ycenter);
     }
     painter->setPen(QPen(QColor(255,252,54)));
-    painter->drawPolyline(dispList, this->Sp);
+    painter->drawPolyline(dispList, (this->Sp));
 
     // X symmetry
     m.translate(this->width(), 0);

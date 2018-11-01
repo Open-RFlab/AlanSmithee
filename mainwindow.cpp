@@ -1,5 +1,6 @@
 #include <complex>
 #include <QFileDialog>
+#include <QMessageBox>
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
@@ -35,6 +36,12 @@ void MainWindow::openSFile() {
     QString sfilename = QFileDialog::getOpenFileName(this, tr("Open Directory"), "/home");
     std::ifstream sfile;
     sfile.open(sfilename.toStdString(), std::ios_base::in);
+
+    if(!sfile.is_open()) {
+        QMessageBox mbox;
+        mbox.setText("Can't open the file");
+        mbox.exec();
+    }
 
     TouchstoneParser myParser(sfile);
 }

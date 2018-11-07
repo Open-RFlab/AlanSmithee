@@ -104,6 +104,12 @@ void SmithWidget::addZPoint(std::complex<double> Zt) {
 
 }
 
+void SmithWidget::addSPoint(std::complex<double> St) {
+    this->SList[Sp] = St;
+    Sp++;
+
+}
+
 void SmithWidget::paintEvent(QPaintEvent *event) {
     QPainter painter;
 

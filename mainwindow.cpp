@@ -44,4 +44,13 @@ void MainWindow::openSFile() {
     }
 
     TouchstoneParser myParser(sfile);
+    S2P data;
+    data.ts = &myParser;
+    data.ref = 1;
+    Sparam.push_back(data);
+
+    for(uint16_t i = 0; i < myParser.Nparam.size()-1; i ++) { /* bug of last element */
+        this->ui->smithGLWidget->addSPoint(myParser.Nparam[i].S);
+    }
+    this->ui->smithGLWidget->repaint();
 }

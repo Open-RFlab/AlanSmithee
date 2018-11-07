@@ -29,6 +29,7 @@ public:
     double Z0 = 50;
 
     void addZPoint(std::complex<double> Zt);
+    void addSPoint(std::complex<double> St);
 
 private:
     void drawSmith(QPainter *painter);

@@ -3,6 +3,7 @@
 SmithWidget::SmithWidget(QWidget *parent) : QOpenGLWidget(parent)
 {
     setAutoFillBackground(false);
+    setMouseTracking(true);
 }
 
 void SmithWidget::setSize(uint16_t asize) {
@@ -31,6 +32,8 @@ void SmithWidget::drawSmith(QPainter *painter) {
     m.translate(0, ysize);
     m.scale(1, -1);
     painter->setMatrix(m);
+
+    painter->scale(scale, scale);
 
     // Real Line
     painter->drawLine(xsize/2.0-radius, ysize/2.0, xsize/2.0+radius, ysize/2.0);
@@ -67,29 +70,32 @@ void SmithWidget::drawSmith(QPainter *painter) {
     painter->drawPolyline(dispList, (this->Sp));
 
     // X symmetry
-    m.translate(this->width(), 0);
-    m.scale(-1, 1);
-    painter->setMatrix(m);
+//    m.translate(this->width(), 0);
+//    m.scale(-1, 1);
+//    painter->setMatrix(m);
+
+//    painter->scale(scale, scale);
 
     for(uint32_t i = 0; i < scNbCircle; i++) {
         // Constant Resistance
         painter->setPen(QPen(QColor(63,63,127)));
 
         double val = ZDispList[i]/Z0;
-        QPointF c((val/(val+1.0))*radius+xcenter,0.0+ycenter);
+        QPointF c(xcenter-(val/(val+1.0))*radius,0.0+ycenter);
         double r = (1.0/(val+1.0)) * radius;
         painter->drawEllipse(c, r, r);
 
-        // Constant Reactance
+        // Constant Susceptance
         painter->setPen(QPen(QColor(63,63,250)));
-        QPointF cjp(1.0*radius+xcenter, (1.0/val)*radius+ycenter);
+        QPointF cjp(xcenter-1.0*radius, (1.0/val)*radius+ycenter);
         double rjp = (1.0/val)*radius;
         painter->drawEllipse(cjp, rjp, rjp);
 
-        QPointF cjn(1.0*radius+xcenter, (-1.0/val)*radius+ycenter);
+        QPointF cjn(xcenter-1.0*radius, (-1.0/val)*radius+ycenter);
         double rjn = (-1.0/val)*radius;
         painter->drawEllipse(cjn, rjn, rjn);
     }
+
 }
 
 void SmithWidget::addZPoint(std::complex<double> Zt) {
@@ -122,4 +128,17 @@ void SmithWidget::paintEvent(QPaintEvent *event) {
     painter.save();
 
     painter.end();
+}
+
+void SmithWidget::wheelEvent(QWheelEvent *event) {
+    QPoint p = (event->angleDelta());
+    scale += p.y()/1200.0;
+    if(scale >= 5.0) scale = 5.0;
+    else if(scale <= 0.1) scale = 0.1;
+    this->repaint();
+    event->accept();
+}
+
+void mousePressEvent(QMouseEvent *event) {
+
 }

@@ -62,19 +62,6 @@ void SmithWidget::drawSmith(QPainter *painter) {
         painter->drawEllipse(cjn, rjn, rjn);
     }
 
-    for(uint16_t j = 0; j < Sp; j++) {
-        dispList[j].setX(SList[j].real()*radius+xcenter);
-        dispList[j].setY(SList[j].imag()*radius+ycenter);
-    }
-    painter->setPen(QPen(QColor(255,252,54)));
-    painter->drawPolyline(dispList, (this->Sp));
-
-    // X symmetry
-//    m.translate(this->width(), 0);
-//    m.scale(-1, 1);
-//    painter->setMatrix(m);
-
-//    painter->scale(scale, scale);
 
     for(uint32_t i = 0; i < scNbCircle; i++) {
         // Constant Resistance
@@ -95,6 +82,13 @@ void SmithWidget::drawSmith(QPainter *painter) {
         double rjn = (-1.0/val)*radius;
         painter->drawEllipse(cjn, rjn, rjn);
     }
+
+    for(uint16_t j = 0; j < Sp; j++) {
+        dispList[j].setX(SList[j].real()*radius+xcenter);
+        dispList[j].setY(SList[j].imag()*radius+ycenter);
+    }
+    painter->setPen(QPen(QColor(255,252,54)));
+    painter->drawPolyline(dispList, (this->Sp));
 
 }
 
@@ -139,6 +133,10 @@ void SmithWidget::wheelEvent(QWheelEvent *event) {
     event->accept();
 }
 
-void mousePressEvent(QMouseEvent *event) {
+void SmithWidget::mousePressEvent(QMouseEvent *event) {
+    event->accept();
+}
 
+void SmithWidget::mouseReleaseEvent(QMouseEvent *event) {
+    event->accept();
 }

@@ -34,6 +34,7 @@ void SmithWidget::drawSmith(QPainter *painter) {
     painter->setMatrix(m);
 
     painter->scale(scale, scale);
+    painter->translate(offset);
 
     // Real Line
     painter->drawLine(xsize/2.0-radius, ysize/2.0, xsize/2.0+radius, ysize/2.0);
@@ -134,9 +135,26 @@ void SmithWidget::wheelEvent(QWheelEvent *event) {
 }
 
 void SmithWidget::mousePressEvent(QMouseEvent *event) {
+    if(event->buttons() & Qt::MiddleButton) {
+        clickpos = event->pos();
+    }
+    event->accept();
+}
+
+void SmithWidget::mouseMoveEvent(QMouseEvent *event) {
+    if(event->buttons() & Qt::MiddleButton) {
+        offset.setX(offset.x() +(event->pos().x()-clickpos.x())/2);
+        offset.setY(offset.y() -(event->pos().y()-clickpos.y())/2);
+        clickpos = event->pos();
+        this->repaint();
+    }
     event->accept();
 }
 
 void SmithWidget::mouseReleaseEvent(QMouseEvent *event) {
+    if(event->buttons() & Qt::MiddleButton) {
+        //offset.setX(0);
+        //offset.setY(0);
+    }
     event->accept();
 }

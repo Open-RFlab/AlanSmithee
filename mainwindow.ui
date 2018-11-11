@@ -53,7 +53,7 @@
      </rect>
     </property>
     <property name="title">
-     <string>Settings</string>
+     <string>Manual</string>
     </property>
     <widget class="QPushButton" name="pbSetZp">
      <property name="geometry">
@@ -126,7 +126,11 @@
    <addaction name="menuFIle"/>
    <addaction name="menuTouchstone"/>
   </widget>
-  <widget class="QToolBar" name="mainToolBar">
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
@@ -134,10 +138,19 @@
     <bool>false</bool>
    </attribute>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionOpenSFile">
    <property name="text">
-    <string>Open</string>
+    <string>&amp;Open</string>
+   </property>
+  </action>
+  <action name="actionAdd_Serie">
+   <property name="text">
+    <string>&amp;Add Serie</string>
+   </property>
+  </action>
+  <action name="actionAdd_Parallel">
+   <property name="text">
+    <string>Add &amp;Parallel</string>
    </property>
   </action>
  </widget>
@@ -158,8 +171,8 @@
    <slot>openSFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>610</x>
-     <y>14</y>
+     <x>-1</x>
+     <y>-1</y>
     </hint>
     <hint type="destinationlabel">
      <x>610</x>

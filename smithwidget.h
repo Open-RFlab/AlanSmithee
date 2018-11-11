@@ -26,7 +26,8 @@ public:
     uint16_t size = 0;
 
     qreal scale = 1.0;
-    qreal offset = 0.0;
+    QPoint clickpos;
+    QPoint offset;
 
     double ZDispList[scNbCircle] = {10.0, 25.0, 50.0, 100.0, 200.0, 500.0};
 
@@ -43,6 +44,7 @@ protected:
     void paintEvent(QPaintEvent *event) override;
     void wheelEvent(QWheelEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;
+    void mouseMoveEvent(QMouseEvent *event) override;
     void mouseReleaseEvent(QMouseEvent *event) override;
 };
 

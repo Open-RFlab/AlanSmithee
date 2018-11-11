@@ -27,12 +27,16 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     smithwidget.cpp \
-    touchwater/src/touchwater.cpp
+    touchwater/src/touchwater.cpp \
+    component.cpp \
+    idealcomp.cpp
 
 HEADERS += \
         mainwindow.h \
     smithwidget.h \
-    touchwater/inc/touchwater.hpp
+    touchwater/inc/touchwater.hpp \
+    component.h \
+    idealcomp.h
 
 FORMS += \
         mainwindow.ui

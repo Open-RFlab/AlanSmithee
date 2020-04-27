@@ -6,110 +6,80 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1222</width>
-    <height>611</height>
+    <width>1088</width>
+    <height>607</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>AlanSmithee</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <property name="maximumSize">
-    <size>
-     <width>1261</width>
-     <height>542</height>
-    </size>
-   </property>
-   <widget class="QGroupBox" name="groupBox">
-    <property name="geometry">
-     <rect>
-      <x>-1</x>
-      <y>-1</y>
-      <width>811</width>
-      <height>541</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Smitch Chart</string>
-    </property>
-    <widget class="SmithWidget" name="smithGLWidget">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>791</width>
-       <height>501</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="groupBox_2">
-    <property name="geometry">
-     <rect>
-      <x>809</x>
-      <y>-1</y>
-      <width>411</width>
-      <height>191</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Manual</string>
-    </property>
-    <widget class="QPushButton" name="pbSetZp">
-     <property name="geometry">
-      <rect>
-       <x>307</x>
-       <y>30</y>
-       <width>101</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Add Z</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="tZpoint">
-     <property name="geometry">
-      <rect>
-       <x>12</x>
-       <y>31</y>
-       <width>291</width>
-       <height>31</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="groupBox_3">
-    <property name="geometry">
-     <rect>
-      <x>809</x>
-      <y>189</y>
-      <width>411</width>
-      <height>351</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Circuit</string>
-    </property>
-    <widget class="QOpenGLWidget" name="openGLWidget">
-     <property name="geometry">
-      <rect>
-       <x>9</x>
-       <y>29</y>
-       <width>391</width>
-       <height>311</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0" rowspan="5" colspan="3">
+     <widget class="QGroupBox" name="groupBox_1">
+      <property name="title">
+       <string>Smitch Chart</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_1">
+       <item row="0" column="0">
+        <widget class="SmithWidget" name="smithGLWidget"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="3" rowspan="2" colspan="2">
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="title">
+       <string>Manual</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="2">
+        <widget class="QPushButton" name="pbSetZp">
+         <property name="text">
+          <string>Add Z</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="2">
+        <widget class="QLineEdit" name="tZpoint"/>
+       </item>
+       <item row="1" column="0">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="2" column="3" rowspan="3" colspan="2">
+     <widget class="QGroupBox" name="groupBox_3">
+      <property name="title">
+       <string>Circuit</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <widget class="QOpenGLWidget" name="openGLWidget"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1222</width>
-     <height>30</height>
+     <width>1088</width>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFIle">

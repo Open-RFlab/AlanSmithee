@@ -1,3 +1,3 @@
 [submodule "touchwater"]
 	path = touchwater
-	url = git@code.electrolab.fr:nats/touchwater.git
+	url = git@github.com:Open-RFlab/touchwater.git

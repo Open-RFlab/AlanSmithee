@@ -36,6 +36,9 @@ public:
     void addZPoint(std::complex<double> Zt);
     void addSPoint(std::complex<double> St);
 
+signals:
+    void sendCurSZ(const std::complex<double> Z, const std::complex<double> S);
+
 private:
     void drawSmith(QPainter *painter);
     void calcCircle();

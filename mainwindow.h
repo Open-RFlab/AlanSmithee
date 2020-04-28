@@ -26,6 +26,9 @@ private slots:
     void on_pbSetZp_clicked();
     void openSFile();
 
+public slots:
+    void getCurSZ(const std::complex<double> Z, const std::complex<double> S);
+
 private:
     Ui::MainWindow *ui;
     std::vector<S2P> Sparam;

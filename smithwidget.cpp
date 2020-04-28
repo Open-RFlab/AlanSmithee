@@ -126,10 +126,10 @@ void SmithWidget::paintEvent(QPaintEvent *event) {
 }
 
 void SmithWidget::wheelEvent(QWheelEvent *event) {
-    QPoint p = (event->angleDelta());
+    /*QPoint p = (event->angleDelta());
     scale += p.y()/1200.0;
     if(scale >= 5.0) scale = 5.0;
-    else if(scale <= 0.1) scale = 0.1;
+    else if(scale <= 0.1) scale = 0.1;*/
     this->repaint();
     event->accept();
 }
@@ -142,11 +142,29 @@ void SmithWidget::mousePressEvent(QMouseEvent *event) {
 }
 
 void SmithWidget::mouseMoveEvent(QMouseEvent *event) {
+    double xsize = this->width();
+    double ysize = this->height();
+
+    double radius = (xsize < ysize) ? xsize/2.0 : ysize/2.0;
+    double ycenter = ysize/2.0;
+    double xcenter = xsize/2.0;
+
     if(event->buttons() & Qt::MiddleButton) {
         offset.setX(offset.x() +(event->pos().x()-clickpos.x())/2);
         offset.setY(offset.y() -(event->pos().y()-clickpos.y())/2);
         clickpos = event->pos();
         this->repaint();
+    } else {
+        // Fetch corrected coordinate
+        int x = event->pos().x()-offset.x();
+        int y = event->pos().y()+offset.y();
+
+        double xS = (x-xcenter)/radius;
+        double yS = (y-ycenter)/radius;
+        std::complex<double> S = xS+yS*1j;
+        std::complex<double> Z = -1.0 * Z0 * (S+1.0)/(S-1.0);
+
+        emit(sendCurSZ(Z,S));
     }
     event->accept();
 }

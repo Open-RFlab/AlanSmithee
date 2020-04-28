@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->smithGLWidget->setSize(15000);
+
+    connect(this->ui->smithGLWidget, SIGNAL(sendCurSZ(const std::complex<double>, const std::complex<double>)), this, SLOT(getCurSZ(const std::complex<double>, const std::complex<double>)));
 }
 
 MainWindow::~MainWindow()
@@ -53,4 +55,10 @@ void MainWindow::openSFile() {
         this->ui->smithGLWidget->addSPoint(myParser.Sparam[i].S[0]);
     }
     this->ui->smithGLWidget->repaint();
+}
+
+void MainWindow::getCurSZ(const std::complex<double> Z, const std::complex<double> S) {
+    std::string statusZS;
+    statusZS = "Z: " + std::to_string(Z.real()) + "i*" + std::to_string(Z.imag()) + " S: " + std::to_string(S.real()) + "i*" + std::to_string(S.imag());
+    this->ui->statusBar->showMessage(QString::fromStdString(statusZS));
 }
